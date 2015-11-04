@@ -1,0 +1,40 @@
+<div class="container">
+	<h2>New talk</h2>
+	<p class="alert alert-success" role="alert" ng-if="upload_status.status == 'success'">Talk successfully added to the database.</p>
+	<p class="alert alert-danger" role="alert" ng-if="upload_status.status == 'error'">Error while adding talk.</p>
+	<form role="form" ng-submit="submit(form.$valid)" name="form" novalidate>
+		<div class="form-group">
+			<label for="title">Title</label>
+			<input type="text" class="form-control" placeholder="Title" name="title" ng-model="talk.title" required>
+		</div>
+		<div class="form-group">
+			<label for="title">Venue</label>
+			<input type="text" class="form-control" placeholder="Venue (JERC meeting, ...)" name="venue" ng-model="talk.venue" required>
+		</div>
+		<div class="form-group">
+			<label for="location">Location</label>
+			<input type="text" class="form-control" name="location" placeholder="Location (CERN, ...)" required ng-model="talk.location">
+		</div>
+		<div class="row">
+			<div class="form-group col-sm-6">
+				<label for="type">Type</label>
+				<select class="form-control" name="type" ng-model="talk.type">
+					<option ng-repeat="(key, value) in talkType" value="{{key}}">{{value}}</option>
+				</select>
+			</div>
+			<div class="form-group col-sm-4">
+				<label for="date">Date</label>
+				<input type="datetime" date-time ng-model="talk.date" format="yyyy/MM/dd" view="month" auto-close="true" min-view="date" class="form-control" name="date" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<div ngf-drop ngf-select ng-model="file" name="file" class="drop-box panel" ngf-drag-over-class="dragover" ngf-multiple="false" ngf-allow-dir="false" accept="application/pdf"><div>Drop pdf here or click to upload</div><div ng-show="file"><strong>{{file.name}}</strong></div></div>
+		</div>
+		<div class="form-group">
+			<input class="btn btn-primary" type="submit" value="Create" ng-disabled="upload_status.status == 'uploading'">
+		</div>
+		<div ng-if="upload_status.status == 'uploading'">
+			<div class="alert alert-info" role="alert">Creating talk... {{upload_status.data}}%.</div>
+		</div>
+	</form>
+</div>

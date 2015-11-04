@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <h2>Talks</h2>
+  <div class="panel panel-default" ng-show="talks.length">
+    <div class="panel-body">Showing talks {{firstTalk + 1}} to {{lastTalk}} over {{talks.length}}.</div>
+  </div>
+  <div class="row">
+    <div class="alert alert-info" role="alert" ng-show="!talks.length">No talks available. <a href="#/talk/new">You can add one right now!</a></div>
+  </div>
+
+  <grid source="filteredTalks" break="4"></grid>
+
+  <div class="text-center" ng-show="talks.length">
+    <pagination total-items="talks.length" ng-model="currentPage" items-per-page="numPerPage"></pagination>
+  </div>
+</div>

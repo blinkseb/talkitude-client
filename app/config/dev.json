@@ -1,0 +1,4 @@
+{
+	"ENV": "development",
+	"API_END_POINT": "http://[::]:8080"
+}

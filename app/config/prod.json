@@ -1,0 +1,4 @@
+{
+	"ENV": "production",
+	"API_END_POINT": "https://talkitude.madalynn.eu:8080"
+}

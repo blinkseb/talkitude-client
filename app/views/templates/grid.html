@@ -1,0 +1,18 @@
+<div class="row" ng-repeat="row in data">
+      <div class="col-md-{{12 / $parent.$parent.break}}" ng-repeat="talk in row">
+            <div class="talk panel panel-default">
+                  <div class="panel-body">
+                        <div class="pull-right text-center">
+                              <a href ng-click="download(talk)"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+                              <a href ng-click="delete(talk)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        </div>
+                        <div class="content">
+                              {{data.length}} <span class="title">{{talk.title}}</span> @ <span class="venue">{{talk.venue}}</span>
+                        </div>
+                  </div>
+                  <div class="panel-footer">
+                        <span class="location">{{talk.location}}</span>, on <time>{{talk.date | date:'yyyy/MM/dd'}}</time> (<span class="type">{{talk.type}}</span>)
+                  </div>
+            </div>
+      </div>
+</div>

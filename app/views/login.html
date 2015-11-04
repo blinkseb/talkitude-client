@@ -1,0 +1,23 @@
+<div class="container">
+	<h2>Login</h2>
+	<p class="lead">Please login to access protected resources.</p>
+	<div ng-show="expiredToken" class="clearfix alert alert-danger" role="alert">Credentials are no longer valid or have expired. Please login again.</div>
+	<form role="form" ng-submit="submit(form.$valid)" name="form" novalidate>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" class="form-control" placeholder="Email" name="email" ng-model="email">
+			<p ng-show="form.email.$invalid && !form.email.$pristine" class="text-info">Invalid email address.</p>
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" name="password" placeholder="Password" required ng-model="password" ng-minlength="6">
+			<p ng-show="form.password.$error.minlength" class="text-info">Your password is too short.</p>
+		</div>
+		<div class="form-group">
+			<input class="btn btn-primary" type="submit" value="Submit" ng-disabled="form.$invalid">
+		</div>
+	</form>
+	<div ng-show="invalidCredentials">
+		<div class="clearfix alert alert-danger" role="alert">Invalid email address or password.</div>
+	</div>
+</div>
